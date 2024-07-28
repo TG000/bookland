@@ -34,7 +34,7 @@ body {
 	}
 
 	.btn-secondary {
-		@apply bg-light-border-light dark:bg-dark-border-light !important;
+		@apply bg-light-border-light dark:bg-dark-border-light;
 	}
 }
 

@@ -6,7 +6,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 	return (
 		<main className="flex-center min-h-screen w-full">
 			<div className="flex-between background h-screen grow flex-col p-12">
-				<Image src={logoImg} alt="logo" height={70} />
+				<Image src={logoImg} alt="logo" height={60} />
 				{children}
 			</div>
 			<Image

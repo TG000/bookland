@@ -39,6 +39,18 @@
 		@apply border-light-border-heavy dark:border-dark-border-heavy;
 	}
 
+	.bg-border-light {
+		@apply bg-light-border-light dark:bg-dark-border-light;
+	}
+
+	.bg-border-medium {
+		@apply bg-light-border-medium dark:bg-dark-border-medium;
+	}
+
+	.bg-border-heavy {
+		@apply bg-light-border-heavy dark:bg-dark-border-heavy;
+	}
+
 	.h1-bold {
 		@apply text-[48px] font-bold font-merriweather;
 	}
