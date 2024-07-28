@@ -12,28 +12,30 @@ import {
 	FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { SignInSchema } from "@/lib/validations";
-import { MdEmail, MdLock } from "react-icons/md";
+import { SignUpSchema } from "@/lib/validations";
+import { MdPerson, MdEmail, MdLock, MdCall } from "react-icons/md";
 import { useState } from "react";
 
-const SignInForm = () => {
+const SignUpForm = () => {
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
-	const form = useForm<z.infer<typeof SignInSchema>>({
-		resolver: zodResolver(SignInSchema),
+	const form = useForm<z.infer<typeof SignUpSchema>>({
+		resolver: zodResolver(SignUpSchema),
 		defaultValues: {
+			username: "",
 			email: "",
+			phone: "",
 			password: "",
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof SignInSchema>) {
+	function onSubmit(values: z.infer<typeof SignUpSchema>) {
 		setIsSubmitting(true);
 
 		try {
-			// TODO: Make an async call to API -> sign in
+			// TODO: Make an async call to API -> sign up
 			// Contain all form data
-			// Navigate to home page
+			// Navigate to sign in page
 		} catch (error) {
 			console.error(error);
 		} finally {
@@ -44,6 +46,26 @@ const SignInForm = () => {
 	return (
 		<Form {...form}>
 			<form onSubmit={form.handleSubmit(onSubmit)} className="w-full">
+				<FormField
+					control={form.control}
+					name="username"
+					render={({ field }) => (
+						<FormItem className="my-4">
+							<div className="flex-start border-heavy rounded-xl border px-4 py-2">
+								<MdPerson className="text-normal body-medium" />
+								<FormControl>
+									<Input
+										placeholder="Username"
+										className="no-focus text-normal body-medium placeholder border-0 bg-transparent"
+										autoComplete="off"
+										{...field}
+									/>
+								</FormControl>
+							</div>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
 				<FormField
 					control={form.control}
 					name="email"
@@ -66,10 +88,30 @@ const SignInForm = () => {
 				/>
 				<FormField
 					control={form.control}
+					name="phone"
+					render={({ field }) => (
+						<FormItem className="my-4">
+							<div className="flex-start border-heavy rounded-xl border px-4 py-2">
+								<MdCall className="text-normal body-medium" />
+								<FormControl>
+									<Input
+										placeholder="Phone Number"
+										className="no-focus text-normal body-medium placeholder border-0 bg-transparent"
+										autoComplete="off"
+										{...field}
+									/>
+								</FormControl>
+							</div>
+							<FormMessage />
+						</FormItem>
+					)}
+				/>
+				<FormField
+					control={form.control}
 					name="password"
 					render={({ field }) => (
 						<FormItem className="my-4">
-							<div className="flex-start border-heavy border px-4 py-2 rounded-xl">
+							<div className="flex-start border-heavy rounded-xl border px-4 py-2">
 								<MdLock className="text-normal body-medium" />
 								<FormControl>
 									<Input
@@ -97,4 +139,4 @@ const SignInForm = () => {
 	);
 };
 
-export default SignInForm;
+export default SignUpForm;

@@ -18,6 +18,7 @@ const config: Config = {
 		extend: {
 			colors: {
 				primary: "#4A90E2",
+				error: "#FF0000",
 				accent: {
 					1: "#C3BEF0",
 					2: "#CCA8E9",
