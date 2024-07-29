@@ -1,9 +1,8 @@
 import SignInForm from "@/components/forms/SignInForm";
 import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
-import Image from "next/image";
-import { facebookIcon, googleIcon } from "@/constants/assets_constant";
 import Link from "next/link";
+import { providerMap } from "@/lib/auth";
+import OAuthButton from "@/components/shared/OAuthButton";
 
 const SignInPage = () => {
 	return (
@@ -12,28 +11,9 @@ const SignInPage = () => {
 				<h1 className="h1-bold text-normal mb-5">SIGN IN</h1>
 				<SignInForm />
 				<Separator className="bg-border-heavy my-6" />
-				<Button
-					type="submit"
-					className="btn-secondary button-small text-normal my-2 w-full py-3"
-				>
-					<Image
-						src={googleIcon}
-						alt="icon"
-						className="mr-3 size-5"
-					/>
-					Sign In with Google
-				</Button>
-				<Button
-					type="submit"
-					className="btn-secondary button-small text-normal my-2 w-full py-3"
-				>
-					<Image
-						src={facebookIcon}
-						alt="icon"
-						className="mr-3 size-5"
-					/>
-					Sign In with Facebook
-				</Button>
+				{Object.values(providerMap).map((provider) => (
+					<OAuthButton key={provider.name} provider={provider} />
+				))}
 			</div>
 			<p className="text-normal">
 				Don&apos;t have an account?{" "}
