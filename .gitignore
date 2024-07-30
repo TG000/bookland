@@ -1,20 +1,20 @@
 # dependencies
-*/dist
-*/node_modules
-*/.pnp
+/dist
+/node_modules
+/.pnp
 .pnp.js
 .yarn/install-state.gz
 
 # testing
-*/coverage
-*/.nyc_output
+/coverage
+/.nyc_output
 
 # next.js
-*/.next/
-*/out/
+/.next/
+/out/
 
 # production
-*/build
+/build
 
 # misc
 .DS_Store
@@ -30,7 +30,7 @@ yarn-error.log*
 lerna-debug.log*
 
 # IDEs and editors
-*/.idea
+/.idea
 .project
 .classpath
 .c9/
