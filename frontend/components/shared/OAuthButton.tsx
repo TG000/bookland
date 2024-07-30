@@ -1,15 +1,15 @@
 "use client";
 
 import React from "react";
-import { Button } from "../ui/button";
 import Image from "next/image";
 import { getOAuthIcon } from "@/lib/utils";
+import { Button } from "../ui/button";
 
-const OAuthButton = ({ provider }: any) => {
+const OAuthButton = ({ provider }: { provider: OAuthProvider }) => {
 	return (
 		<Button
 			className="btn-secondary button-small text-normal my-2 w-full py-3"
-			onClick={() => {}}
+			onClick={() => supabase.auth}
 		>
 			<Image
 				src={getOAuthIcon(provider.id)}

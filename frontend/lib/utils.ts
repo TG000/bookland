@@ -1,4 +1,4 @@
-import { facebookIcon, googleIcon } from "@/constants/assets_constant";
+import { facebookIcon, googleIcon } from "@/constants/asset_constants";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 

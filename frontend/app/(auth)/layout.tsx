@@ -1,4 +1,4 @@
-import { authImg, logoImg } from "@/constants/assets_constant";
+import { authImg, logoImg } from "@/constants/asset_constants";
 import Image from "next/image";
 import React from "react";
 
@@ -13,6 +13,7 @@ const AuthLayout = ({ children }: { children: React.ReactNode }) => {
 				src={authImg}
 				alt="background image"
 				className="h-screen w-1/2 object-cover"
+				priority={true}
 			/>
 		</main>
 	);

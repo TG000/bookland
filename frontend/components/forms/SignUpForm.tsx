@@ -15,8 +15,12 @@ import { Input } from "@/components/ui/input";
 import { SignUpSchema } from "@/lib/validations";
 import { MdPerson, MdEmail, MdLock, MdCall } from "react-icons/md";
 import { useState } from "react";
+import { signUp } from "@/lib/actions/user.action";
+import { useRouter } from "next/navigation";
 
 const SignUpForm = () => {
+	const router = useRouter();
+
 	const [isSubmitting, setIsSubmitting] = useState(false);
 
 	const form = useForm<z.infer<typeof SignUpSchema>>({
@@ -29,13 +33,13 @@ const SignUpForm = () => {
 		},
 	});
 
-	function onSubmit(values: z.infer<typeof SignUpSchema>) {
+	async function onSubmit(values: z.infer<typeof SignUpSchema>) {
 		setIsSubmitting(true);
 
 		try {
-			// TODO: Make an async call to API -> sign up
-			// Contain all form data
-			// Navigate to sign in page
+			await signUp(values);
+
+			router.push("/sign-in");
 		} catch (error) {
 			console.error(error);
 		} finally {
