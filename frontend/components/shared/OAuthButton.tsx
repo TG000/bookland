@@ -3,14 +3,13 @@
 import React from "react";
 import { Button } from "../ui/button";
 import Image from "next/image";
-import { signIn } from "next-auth/react";
 import { getOAuthIcon } from "@/lib/utils";
 
 const OAuthButton = ({ provider }: any) => {
 	return (
 		<Button
 			className="btn-secondary button-small text-normal my-2 w-full py-3"
-			onClick={() => signIn(provider.id)}
+			onClick={() => {}}
 		>
 			<Image
 				src={getOAuthIcon(provider.id)}
