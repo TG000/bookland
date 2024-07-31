@@ -1,8 +1,8 @@
 <div align="center">
 
-</picture>
-<img alt="Branding" src="./public/assets/images/logo.png">
 <picture>
+<img alt="Branding" src="./public/assets/images/logo.png">
+</picture>
 
 [![GitHub Contributors][github_contributors]][github_contributors_url]
 [![GitHub Release][github_release]][github_release_url]
