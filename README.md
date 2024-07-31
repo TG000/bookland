@@ -42,8 +42,8 @@ Bookland is an web application that creates a vibrant online community for book 
 
 ### Prerequisites
 
-- Node Package Manager (npm)
-- PostgreSQL
+- [Node Package Manager (npm)][npm-url]
+- [PostgreSQL][postgresql-url]
 
 ### Installation
 
@@ -106,3 +106,4 @@ Follow the below guide to install the project locally:
 [supabase-url]: https://supabase.com/
 [postgresql]: https://img.shields.io/badge/PostgreSQL-3c366b?style=for-the-badge&logo=postgresql
 [postgresql-url]: https://www.postgresql.org/
+[npm-url]: https://www.npmjs.com/
