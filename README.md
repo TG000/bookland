@@ -4,9 +4,9 @@
 <img alt="Branding" src="./public/assets/images/logo.png">
 <picture>
 
-![GitHub Contributors][github_contributors]
-![GitHub Release][github_release]
-![GitHub License][github_license]
+[![GitHub Contributors][github_contributors]][github_contributors_url]
+[![GitHub Release][github_release]][github_release_url]
+[![GitHub License][github_license]][github_license_url]
 
 ##### An online web app where users can read and share books and stories.
 
@@ -89,8 +89,11 @@ Follow the below guide to install the project locally:
    ```
 
 [github_contributors]: https://img.shields.io/github/contributors/TG000/bookland?color=green
+[github_contributors_url]: https://github.com/gicatran/bookland/graphs/contributors
 [github_release]: https://img.shields.io/github/v/release/TG000/bookland?color=blue
+[github_release_url]: https://github.com/gicatran/bookland/releases
 [github_license]: https://img.shields.io/github/license/TG000/bookland?color=blue
+[github_license_url]: https://github.com/gicatran/bookland/blob/master/LICENSE
 [website]: http://localhost:3000/
 [request_feature]: http://
 [report_bug]: http://
