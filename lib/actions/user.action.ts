@@ -33,14 +33,18 @@ export async function signUp(params: SignUpProps) {
             },
         });
 
-        if (user !== undefined && user !== null) {
+        console.log(user);
+
+        if (user !== null) {
             console.log("User already exists!");
+            return;
         }
 
         const newUser = await supabase.auth.signUp({ email, phone, password });
 
         if (newUser.error) {
             console.error(newUser.error);
+            return;
         }
 
         const data = { username, email, phone };
