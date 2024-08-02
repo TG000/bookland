@@ -40,7 +40,7 @@ const SignUpForm = () => {
             const response = await signUp(values);
 
             if (response.error) {
-                form.setError(
+                return form.setError(
                     response.error as any,
                     {
                         message: response.message,
@@ -49,11 +49,14 @@ const SignUpForm = () => {
                         shouldFocus: true,
                     }
                 );
-            } else if (response.data === "failed") {
-                // TODO: Pop up a toast message
-            } else {
-                router.push("/sign-in");
             }
+
+            if (response.data === "failed") {
+                // TODO: Pop up a toast message
+                return;
+            }
+
+            router.push("/sign-in");
         } catch (error) {
             console.error(error);
         } finally {

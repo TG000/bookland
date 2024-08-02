@@ -35,74 +35,69 @@ Bookland is an web application that creates a vibrant online community for book 
 
 ### Technologies
 
-- [![][nextjs]][nextjs_url]
-- [![][shadcn]][shadcn_url]
-- [![][tailwindcss]][tailwindcss_url]
-- [![][prisma]][prisma_url]
-- [![][supabase]][supabase_url]
-- [![][postgresql]][postgresql_url]
+-   [![][nextjs]][nextjs_url]
+-   [![][shadcn]][shadcn_url]
+-   [![][tailwindcss]][tailwindcss_url]
+-   [![][lucia]][lucia_url]
+-   [![][prisma]][prisma_url]
+-   [![][postgresql]][postgresql_url]
 
 ## Getting Started
 
 ### Prerequisites
 
-- [Node Package Manager (npm)][npm_url]
-- [PostgreSQL][postgresql_url]
+-   [Node Package Manager (npm)][npm_url]
+-   [PostgreSQL][postgresql_url]
 
 ### Installation
 
 Follow the below guide to install the project locally:
 
-1. Get requirement keys at [Supabase Dashboard][supabase_dashboard_url], [Google Cloud API & Services][google_cloud_url]
+1. Get requirement keys at [Google Cloud API & Services][google_cloud_url]
 
 2. Clone the project repository
 
-   ```shell
-   git clone https://github.com/TG000/bookland.git
-   ```
+    ```shell
+    git clone https://github.com/TG000/bookland.git
+    ```
 
 3. Install npm packages
 
-   ```shell
-   npm install
-   ```
+    ```shell
+    npm install
+    ```
 
 4. Create an .env file at the root folder
 
-   ```
-   # Product
-   NODE_ENV="development" # development or production
+    ```
+    # Product
+    NODE_ENV="development" # development or production
 
-   # Supabase
-   NEXT_PUBLIC_SUPABASE_URL=<your_supabase_url>
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=<your_supabase_key>
+    # OAuth
+    GOOGLE_CLIENT_ID=<your_google_client_id>
+    GOOGLE_CLIENT_SECRET=<your_google_client_secret>
 
-   # OAuth
-   GOOGLE_CLIENT_ID=<your_google_oauth_client_id>
-   GOOGLE_CLIENT_SECRET=<your_google_oauth_client_secret>
-
-   # Database
-   DATABASE_URL=<your_database_url>
-   DIRECT_URL=<your_direct_url>
-   ```
+    # Database
+    DATABASE_URL=<your_database_url>
+    ```
 
 5. Setup your database tables with Prisma
 
-   _Feel free to remove the migrations from prisma/migrations before doing this or just leave it as it is._
+    _Feel free to remove the migrations from prisma/migrations before doing this or just leave it as it is._
 
-   ```shell
-    npx prisma migrate dev --name <migration_name>
-   ```
+    ```shell
+     npx prisma migrate dev --name <migration_name>
+    ```
 
 ## Usage
 
-- For development:
+-   For development:
 
 ```shell
 npm run dev
 ```
 
-- For production:
+-   For production:
 
 ```shell
 npm run start
@@ -133,11 +128,10 @@ Distributed under the [MIT][mit_url] License. See `LICENSE` for more information
 [tailwindcss_url]: https://tailwindcss.com/
 [prisma]: https://img.shields.io/badge/Prisma-1a202c?style=for-the-badge&logo=prisma
 [prisma_url]: https://www.prisma.io/
-[supabase]: https://img.shields.io/badge/Supabase-1c1c1c?style=for-the-badge&logo=supabase
-[supabase_url]: https://supabase.com/
+[lucia]: https://img.shields.io/badge/Lucia-white?style=for-the-badge&logo=lucia
+[lucia_url]: https://lucia-auth.com/
 [postgresql]: https://img.shields.io/badge/PostgreSQL-3c366b?style=for-the-badge&logo=postgresql
 [postgresql_url]: https://www.postgresql.org/
 [npm_url]: https://www.npmjs.com/
 [mit_url]: https://choosealicense.com/licenses/mit/
-[supabase_dashboard_url]: https://supabase.com/dashboard/projects
 [google_cloud_url]: https://console.cloud.google.com/apis/

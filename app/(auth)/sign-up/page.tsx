@@ -6,7 +6,7 @@ import { redirect } from "next/navigation";
 const SignUpPage = async () => {
     const { user } = await validateRequest();
 
-    if (user) {
+    if (user !== null) {
         redirect("/");
     }
 

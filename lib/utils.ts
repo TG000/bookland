@@ -2,8 +2,6 @@
 import { facebookIcon, googleIcon } from "@/constants/asset_constants";
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { redirect } from "next/navigation";
-import { validateRequest } from "./actions/user.action";
 
 export function cn(...inputs: ClassValue[]) {
     return twMerge(clsx(inputs));
@@ -31,14 +29,3 @@ export function isValidEmail(email: string): boolean {
 export function isValidUsername(username: string): boolean {
     return /^[a-z0-9_-]+$/.test(username);
 }
-
-export const validateProtected = async () => {
-    const req = await validateRequest();
-
-    console.log(req);
-
-    if (!req.session) {
-        redirect("/sign-in");
-    }
-    return req;
-};

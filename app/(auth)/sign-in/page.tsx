@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 const SignInPage = async () => {
     const { user } = await validateRequest();
 
-    if (user) {
+    if (user !== null) {
         redirect("/");
     }
 

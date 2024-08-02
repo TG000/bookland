@@ -7,6 +7,10 @@ import { Session, generateIdFromEntropySize, User } from "lucia";
 import { cookies } from "next/headers";
 import { isValidEmail, isValidUsername } from "../utils";
 import { cache } from "react";
+import {
+    generateEmailVerificationCode,
+    sendVerificationCode,
+} from "./email.action";
 
 export async function signIn(params: SignInProps) {
     try {
@@ -46,10 +50,7 @@ export async function signIn(params: SignInProps) {
             };
         }
 
-        const validPassword = await verify(
-            existingUser.password_hash,
-            password
-        );
+        const validPassword = await verify(existingUser.passwordHash, password);
 
         if (!validPassword) {
             return {
@@ -69,6 +70,7 @@ export async function signIn(params: SignInProps) {
         return { data: "success", message: "Sign in successfully." };
     } catch (error) {
         console.error(error);
+        return { data: "failed", message: "An error occurred." };
     }
 }
 
@@ -140,9 +142,15 @@ export async function signUp(params: SignUpProps) {
                 username,
                 email,
                 phone,
-                password_hash: passwordHash,
+                passwordHash,
             },
         });
+
+        const verificationCode = await generateEmailVerificationCode(
+            userId,
+            email
+        );
+        await sendVerificationCode(email, verificationCode);
 
         const session = await lucia.createSession(userId, {});
         const sessionCookie = lucia.createSessionCookie(session.id);

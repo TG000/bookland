@@ -6,6 +6,7 @@ interface DatabaseUserAttributes {
     username: string;
     displayName: string?;
     email: string;
+    emailVerified: boolean;
     phone: string;
     role: string;
 }
