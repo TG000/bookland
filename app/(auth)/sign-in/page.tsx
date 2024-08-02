@@ -1,9 +1,17 @@
 import SignInForm from "@/components/forms/SignInForm";
 import OAuthButton from "@/components/shared/OAuthButton";
 import { Separator } from "@/components/ui/separator";
+import { validateRequest } from "@/lib/actions/user.action";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
-const SignInPage = () => {
+const SignInPage = async () => {
+    const { user } = await validateRequest();
+
+    if (user) {
+        redirect("/");
+    }
+
     return (
         <>
             <div className="flex-center w-1/2 flex-col">

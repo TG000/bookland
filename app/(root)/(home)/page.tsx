@@ -1,5 +1,9 @@
+import { validateProtected } from "@/lib/utils";
+
 const HomePage = () => {
-	return <div>HomePage</div>;
+    validateProtected();
+
+    return <div>HomePage</div>;
 };
 
 export default HomePage;
