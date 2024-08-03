@@ -1,6 +1,7 @@
 import SignInForm from "@/components/forms/SignInForm";
 import OAuthButton from "@/components/shared/OAuthButton";
 import { Separator } from "@/components/ui/separator";
+import { googleProvider } from "@/constants/provider_constants";
 import { validateRequest } from "@/lib/actions/user.action";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -18,7 +19,7 @@ const SignInPage = async () => {
                 <h1 className="h1-bold text-normal mb-5">SIGN IN</h1>
                 <SignInForm />
                 <Separator className="bg-border-heavy my-6" />
-                <OAuthButton provider="google" />
+                <OAuthButton provider={googleProvider} />
             </div>
             <p className="text-normal">
                 Don&apos;t have an account?{" "}

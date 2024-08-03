@@ -35,12 +35,28 @@ Bookland is an web application that creates a vibrant online community for book 
 
 ### Technologies
 
+##### Frontend:
+
 -   [![][nextjs]][nextjs_url]
 -   [![][shadcn]][shadcn_url]
 -   [![][tailwindcss]][tailwindcss_url]
--   [![][lucia]][lucia_url]
--   [![][prisma]][prisma_url]
+
+##### Backend:
+
+-   [![][nextjs]][nextjs_url]
+
+##### Database:
+
 -   [![][postgresql]][postgresql_url]
+-   [![][prisma]][prisma_url]
+
+##### Authentication:
+
+-   [![][lucia]][lucia_url]
+
+##### Others:
+
+-   [![][zod]][zod_url]
 
 ## Getting Started
 
@@ -132,6 +148,8 @@ Distributed under the [MIT][mit_url] License. See `LICENSE` for more information
 [lucia_url]: https://lucia-auth.com/
 [postgresql]: https://img.shields.io/badge/PostgreSQL-3c366b?style=for-the-badge&logo=postgresql
 [postgresql_url]: https://www.postgresql.org/
+[zod]: https://img.shields.io/badge/Zod-3068b7?style=for-the-badge&logo=zod
+[zod_url]: https://zod.dev/
 [npm_url]: https://www.npmjs.com/
 [mit_url]: https://choosealicense.com/licenses/mit/
 [google_cloud_url]: https://console.cloud.google.com/apis/

@@ -41,7 +41,7 @@ const SignUpForm = () => {
 
             if (response.error) {
                 return form.setError(
-                    response.error as any,
+                    response.data as any,
                     {
                         message: response.message,
                     },
@@ -51,7 +51,7 @@ const SignUpForm = () => {
                 );
             }
 
-            if (response.data === "failed") {
+            if (response.failed) {
                 // TODO: Pop up a toast message
                 return;
             }
