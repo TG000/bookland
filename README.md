@@ -88,10 +88,18 @@ Follow the below guide to install the project locally:
     ```
     # Product
     NODE_ENV="development" # development or production
+    BASE_URL=<your_website_url>
 
     # OAuth
     GOOGLE_CLIENT_ID=<your_google_client_id>
     GOOGLE_CLIENT_SECRET=<your_google_client_secret>
+    GOOGLE_REDIRECT_URI=/api/oauth/google
+
+    # SMTP
+    SMTP_HOST=<your_smtp_host>
+    SMTP_PORT=<your_smtp_port>
+    SMTP_USERNAME=<your_smtp_username>
+    SMTP_PASSWORD=<your_smtp_password>
 
     # Database
     DATABASE_URL=<your_database_url>
