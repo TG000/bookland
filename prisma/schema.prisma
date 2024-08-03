@@ -10,15 +10,17 @@ generator client {
 model User {
     id                    String                 @id
     username              String                 @unique
-    displayName           String?                @map("display_name")
+    displayName           String                 @map("display_name")
     email                 String                 @unique
     emailVerified         Boolean                @default(false) @map("email_verified")
-    phone                 String                 @unique
-    passwordHash          String                 @map("password_hash")
+    phone                 String?                @unique
+    passwordHash          String?                @map("password_hash")
     role                  String                 @default("user")
+    profilePictureURL     String                 @map("profile_picture_url")
     createdAt             DateTime               @default(now()) @map("created_at")
     updatedAt             DateTime               @updatedAt @map("updated_at")
     emailVerificationCode EmailVerificationCode?
+    oauthAccounts         OAuthAccount[]
     sessions              Session[]
 
     @@map("users")
@@ -44,4 +46,18 @@ model EmailVerificationCode {
     user User @relation(references: [id], fields: [userId], onDelete: Cascade)
 
     @@map("email_verification_codes")
+}
+
+model OAuthAccount {
+    providerId     String   @map("provider_id")
+    providerUserId String   @map("provider_user_id")
+    userId         String   @map("user_id")
+    accessToken    String   @map("access_token")
+    refreshToken   String?  @map("refresh_token")
+    expiresAt      DateTime @map("expires_at")
+
+    user User @relation(references: [id], fields: [userId], onDelete: Cascade)
+
+    @@id([providerId, providerUserId])
+    @@map("oauth_accounts")
 }

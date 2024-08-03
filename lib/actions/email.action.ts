@@ -34,7 +34,7 @@ export async function sendEmail(params: SendEmailProps) {
         });
 
         return {
-            data: "success",
+            success: "success",
             message: `Email sent: ${info.messageId}`,
         };
     } catch (error) {
@@ -109,7 +109,7 @@ export async function verifyVerificationCode(user: User, code: string) {
 
     if (!validCode) {
         return {
-            data: "failed",
+            failed: true,
             message: "Invalid verification code.",
         };
     }

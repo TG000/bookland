@@ -18,14 +18,14 @@ export function getOAuthIcon(icon: string) {
     }
 }
 
-export function capitalizeFirstLetter(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
 export function isValidEmail(email: string): boolean {
     return /.+@.+/.test(email);
 }
 
 export function isValidUsername(username: string): boolean {
     return /^[a-z0-9_-]+$/.test(username);
+}
+
+export function getUsernameByEmail(email: string) {
+    return email.split("@")[0];
 }

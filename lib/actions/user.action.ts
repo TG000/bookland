@@ -1,16 +1,13 @@
 "use server";
 
 import { SignInProps, SignUpProps } from "@/types/auth";
-import { lucia, prisma } from "@/lib/auth";
+import { google, lucia, prisma } from "@/lib/auth";
 import { verify, hash } from "@node-rs/argon2";
 import { Session, generateIdFromEntropySize, User } from "lucia";
 import { cookies } from "next/headers";
 import { isValidEmail, isValidUsername } from "../utils";
 import { cache } from "react";
-import {
-    generateEmailVerificationCode,
-    sendVerificationCode,
-} from "./email.action";
+import { generateCodeVerifier, generateState } from "arctic";
 
 export async function signIn(params: SignInProps) {
     try {
@@ -21,7 +18,8 @@ export async function signIn(params: SignInProps) {
             !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
         ) {
             return {
-                error: "email",
+                error: true,
+                data: "email",
                 message: "Invalid email address.",
             };
         }
@@ -32,7 +30,8 @@ export async function signIn(params: SignInProps) {
             password.length > 255
         ) {
             return {
-                error: "password",
+                error: true,
+                data: "password",
                 message: "Invalid password.",
             };
         }
@@ -45,16 +44,19 @@ export async function signIn(params: SignInProps) {
 
         if (existingUser === null) {
             return {
-                data: "failed",
+                failed: true,
                 message: "Incorrect email or password.",
             };
         }
 
-        const validPassword = await verify(existingUser.passwordHash, password);
+        const validPassword = await verify(
+            existingUser.passwordHash!,
+            password
+        );
 
         if (!validPassword) {
             return {
-                data: "failed",
+                failed: true,
                 message: "Incorrect email or password.",
             };
         }
@@ -67,10 +69,61 @@ export async function signIn(params: SignInProps) {
             sessionCookie.attributes
         );
 
-        return { data: "success", message: "Sign in successfully." };
+        return {
+            success: true,
+            data: existingUser,
+            message: "Sign in successfully.",
+        };
     } catch (error) {
         console.error(error);
-        return { data: "failed", message: "An error occurred." };
+        return { failed: true, message: "An error occurred." };
+    }
+}
+
+export async function signInWithOAuth(providerId: string) {
+    switch (providerId) {
+        case "google":
+            return createGoogleAuthorizationURL();
+        default:
+            return { failed: true, message: "Invalid OAuth provider." };
+    }
+}
+
+export async function createGoogleAuthorizationURL() {
+    try {
+        const state = generateState();
+        const codeVerifier = generateCodeVerifier();
+
+        cookies().set("codeVerifier", codeVerifier, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 60 * 10,
+            path: "/",
+        });
+
+        cookies().set("state", state, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            maxAge: 60 * 10,
+            path: "/",
+        });
+
+        const authorizationURL = await google.createAuthorizationURL(
+            state,
+            codeVerifier,
+            {
+                scopes: ["openid", "email", "profile"],
+            }
+        );
+
+        return {
+            success: true,
+            data: JSON.parse(JSON.stringify(authorizationURL)),
+            message: "Redirecting to OAuth provider.",
+        };
+    } catch (error) {
+        console.error(error);
+        return { failed: true, message: "An error occurred." };
     }
 }
 
@@ -85,21 +138,24 @@ export async function signUp(params: SignUpProps) {
             !isValidUsername(username)
         ) {
             return {
-                error: "username",
+                error: true,
+                data: "username",
                 message: "Invalid username.",
             };
         }
 
         if (typeof email !== "string" || !isValidEmail(email)) {
             return {
-                error: "email",
+                error: true,
+                data: "email",
                 message: "Invalid email address.",
             };
         }
 
         if (typeof phone !== "string" || phone.length !== 10) {
             return {
-                error: "phone",
+                error: true,
+                data: "phone",
                 message: "Invalid phone number.",
             };
         }
@@ -110,7 +166,8 @@ export async function signUp(params: SignUpProps) {
             password.length > 255
         ) {
             return {
-                error: "password",
+                error: true,
+                data: "password",
                 message: "Invalid password.",
             };
         }
@@ -123,7 +180,7 @@ export async function signUp(params: SignUpProps) {
 
         if (existingUser !== null) {
             return {
-                data: "failed",
+                failed: true,
                 message: "User already exists.",
             };
         }
@@ -135,22 +192,19 @@ export async function signUp(params: SignUpProps) {
         });
 
         const userId = generateIdFromEntropySize(10);
+        const profilePictureURL = process.env.RANDOM_AVATAR_API + username;
 
-        await prisma.user.create({
+        const newUser = await prisma.user.create({
             data: {
                 id: userId,
                 username,
+                displayName: username,
                 email,
                 phone,
                 passwordHash,
+                profilePictureURL,
             },
         });
-
-        const verificationCode = await generateEmailVerificationCode(
-            userId,
-            email
-        );
-        await sendVerificationCode(email, verificationCode);
 
         const session = await lucia.createSession(userId, {});
         const sessionCookie = lucia.createSessionCookie(session.id);
@@ -160,10 +214,14 @@ export async function signUp(params: SignUpProps) {
             sessionCookie.attributes
         );
 
-        return { data: "success", message: "Sign up successfully." };
+        return {
+            success: true,
+            data: newUser,
+            message: "Sign up successfully.",
+        };
     } catch (error) {
         console.error(error);
-        return { data: "failed", message: "An error occurred." };
+        return { failed: true, message: "An error occurred." };
     }
 }
 
@@ -172,7 +230,7 @@ export async function signOut() {
 
     if (!session) {
         return {
-            data: "failed",
+            failed: true,
             message: "Unauthorized.",
         };
     }
@@ -186,7 +244,7 @@ export async function signOut() {
         sessionCookie.attributes
     );
 
-    return { data: "success", message: "Sign out successfully." };
+    return { success: true, data: session, message: "Sign out successfully." };
 }
 
 export const validateRequest = cache(
