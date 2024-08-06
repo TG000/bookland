@@ -4,70 +4,82 @@
 
 @import url("../styles/theme.css");
 
+* {
+    transition: all 0.2s ease;
+}
+
 body {
-	font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
-	.flex-evenly {
-		@apply flex justify-evenly items-center;
-	}
+    .flex-evenly {
+        @apply flex justify-evenly items-center;
+    }
 
-	.flex-between {
-		@apply flex justify-between items-center;
-	}
+    .flex-between {
+        @apply flex justify-between items-center;
+    }
 
-	.flex-start {
-		@apply flex justify-start items-center;
-	}
+    .flex-start {
+        @apply flex justify-start items-center;
+    }
 
-	.flex-center {
-		@apply flex justify-center items-center;
-	}
+    .flex-center {
+        @apply flex justify-center items-center;
+    }
 
-	.flex-end {
-		@apply flex justify-end items-center;
-	}
+    .flex-end {
+        @apply flex justify-end items-center;
+    }
 
-	.btn {
-		@apply bg-primary;
-	}
+    .btn {
+        @apply bg-primary;
+    }
 
-	.btn-secondary {
-		@apply bg-light-border-light dark:bg-dark-border-light;
-	}
+    .btn-hover {
+        @apply hover:bg-primary/70;
+    }
+
+    .btn-secondary {
+        @apply bg-light-border-light dark:bg-dark-border-light;
+    }
+
+    .btn-secondary-hover {
+        @apply hover:bg-light-border-light/70 dark:hover:bg-dark-border-light/70;
+    }
 }
 
 .no-focus {
-	@apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
+    @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 focus-visible:outline-none focus-within:ring-0 focus-within:ring-transparent focus-within:ring-offset-0 focus-within:outline-none focus:ring-offset-0 focus:ring-transparent focus:ring-0 focus:outline-none !important;
 }
 
 .custom-scrollbar::-webkit-scrollbar {
-	width: 3px;
-	height: 3px;
-	border-radius: 2px;
+    width: 3px;
+    height: 3px;
+    border-radius: 2px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
-	background: #ffffff;
+    background: #ffffff;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-	background: #888;
-	border-radius: 50px;
+    background: #888;
+    border-radius: 50px;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-	background: #555;
+    background: #555;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 .no-scrollbar::-webkit-scrollbar {
-	display: none;
+    display: none;
 }
 
 /* Hide scrollbar for IE, Edge and Firefox */
 .no-scrollbar {
-	-ms-overflow-style: none; /* IE and Edge */
-	scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }

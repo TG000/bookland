@@ -23,7 +23,10 @@ const SignInPage = async () => {
             </div>
             <p className="text-normal">
                 Don&apos;t have an account?{" "}
-                <Link href="/sign-up" className="text-primary font-bold">
+                <Link
+                    href="/sign-up"
+                    className="text-primary font-bold hover:text-primary/70"
+                >
                     Sign Up
                 </Link>
             </p>

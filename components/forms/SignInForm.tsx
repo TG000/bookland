@@ -108,7 +108,7 @@ const SignInForm = () => {
                 />
                 <Button
                     type="submit"
-                    className="btn button-small mt-3 w-full py-3 text-white"
+                    className="btn button-small mt-3 w-full py-3 text-white hover:btn-hover"
                     disabled={isSubmitting}
                 >
                     {isSubmitting ? "Loading..." : "Continue"}

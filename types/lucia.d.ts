@@ -9,6 +9,7 @@ interface DatabaseUserAttributes {
     emailVerified: boolean;
     phone: string;
     role: string;
+    profilePictureURL: string;
 }
 
 declare module "lucia" {

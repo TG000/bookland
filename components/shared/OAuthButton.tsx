@@ -22,7 +22,7 @@ const OAuthButton = ({ provider }: { provider: OAuthProvider }) => {
 
     return (
         <Button
-            className="btn-secondary button-small text-normal my-2 w-full py-3"
+            className="btn-secondary button-small text-normal my-2 w-full py-3 hover:btn-secondary-hover"
             onClick={() => onOAuthSignIn()}
         >
             <Image

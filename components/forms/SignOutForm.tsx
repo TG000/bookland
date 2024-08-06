@@ -1,14 +1,20 @@
 "use client";
 
 import { signOut } from "@/lib/actions/user.action";
-import { Button } from "../ui/button";
+import { DropdownMenuItem } from "../ui/dropdown-menu";
+import { MdLogout } from "react-icons/md";
 
 const SignOutForm = () => {
     const logout = async () => {
         await signOut();
     };
 
-    return <Button onClick={logout}>Sign Out</Button>;
+    return (
+        <DropdownMenuItem onClick={logout}>
+            <MdLogout className="mr-2 h-4 w-4" />
+            <span>Log out</span>
+        </DropdownMenuItem>
+    );
 };
 
 export default SignOutForm;

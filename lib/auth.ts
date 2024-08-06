@@ -28,6 +28,7 @@ export const lucia = new Lucia(adapter, {
             emailVerified: attributes.emailVerified,
             phone: attributes.phone,
             role: attributes.role,
+            profilePictureURL: attributes.profilePictureURL,
         };
     },
 });
