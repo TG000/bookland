@@ -5,7 +5,7 @@ import { google, lucia, prisma } from "@/lib/auth";
 import { verify, hash } from "@node-rs/argon2";
 import { Session, generateIdFromEntropySize, User } from "lucia";
 import { cookies } from "next/headers";
-import { isValidEmail, isValidUsername } from "../utils";
+import { isValidEmail, isValidUsername } from "@/lib/utils";
 import { cache } from "react";
 import { generateCodeVerifier, generateState } from "arctic";
 

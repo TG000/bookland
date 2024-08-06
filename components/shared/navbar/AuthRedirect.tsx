@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import { validateRequest } from "@/lib/actions/user.action";
-import UserSettingDropdown from "./UserSettingDropdown";
+import UserSettingDropdown from "@/components/shared/navbar/UserSettingDropdown";
 
 const AuthRedirect = async () => {
     const { user } = await validateRequest();

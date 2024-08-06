@@ -1,7 +1,7 @@
 "use client";
 
 import { signOut } from "@/lib/actions/user.action";
-import { DropdownMenuItem } from "../ui/dropdown-menu";
+import { DropdownMenuItem } from "@/components/ui/dropdown-menu";
 import { MdLogout } from "react-icons/md";
 
 const SignOutForm = () => {

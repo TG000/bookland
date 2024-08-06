@@ -1,27 +1,23 @@
-import { logoImg } from "@/constants/asset_constants";
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
-import GlobalSearchbar from "./GlobalSearchbar";
+import GlobalSearchbar from "@/components/shared/navbar/GlobalSearchbar";
 import { navLinks } from "@/constants";
-import AuthRedirect from "./AuthRedirect";
+import AuthRedirect from "@/components/shared/navbar/AuthRedirect";
 import {
     NavigationMenu,
     NavigationMenuItem,
     NavigationMenuLink,
     NavigationMenuList,
     navigationMenuTriggerStyle,
-} from "../ui/navigation-menu";
-import ThemeToggler from "./ThemeToggler";
+} from "@/components/ui/navigation-menu";
+import ThemeToggler from "@/components/shared/navbar/ThemeToggler";
+import Logo from "@/components/shared/Logo";
 
 const Navbar = () => {
     return (
         <>
-            <div className="w-full background py-4 sticky top-0">
+            <div className={`surface w-full py-4 fixed z-40`}>
                 <div className="container flex-between">
-                    <Link href="/">
-                        <Image src={logoImg} alt="logo" height={60} />
-                    </Link>
+                    <Logo />
                     <GlobalSearchbar />
                     <NavigationMenu>
                         <NavigationMenuList>

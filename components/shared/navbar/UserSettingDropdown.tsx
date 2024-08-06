@@ -12,7 +12,7 @@ import {
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { User } from "lucia";
-import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
     MdAdd,
     MdAddCircleOutline,
@@ -25,7 +25,7 @@ import {
     MdPersonAddAlt,
     MdPersonOutline,
 } from "react-icons/md";
-import SignOutForm from "../forms/SignOutForm";
+import SignOutForm from "@/components/forms/SignOutForm";
 
 const UserSettingDropdown = ({ user }: { user: User }) => {
     return (
@@ -39,7 +39,7 @@ const UserSettingDropdown = ({ user }: { user: User }) => {
             <DropdownMenuContent
                 className="w-56"
                 side="bottom"
-                sideOffset={10}
+                sideOffset={20}
                 align="end"
             >
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>

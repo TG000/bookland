@@ -8,6 +8,10 @@
     transition: all 0.2s ease;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }

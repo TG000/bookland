@@ -1,4 +1,4 @@
-import { Input } from "../ui/input";
+import { Input } from "@/components/ui/input";
 import { MdSearch } from "react-icons/md";
 
 const GlobalSearchbar = () => {

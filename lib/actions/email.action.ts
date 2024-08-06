@@ -2,7 +2,7 @@
 
 import { SendEmailProps } from "@/types/email";
 import { createTransport } from "nodemailer";
-import { lucia, prisma } from "../auth";
+import { lucia, prisma } from "@/lib/auth";
 import { alphabet, generateRandomString } from "oslo/crypto";
 import { TimeSpan, createDate, isWithinExpirationDate } from "oslo";
 import { User } from "lucia";

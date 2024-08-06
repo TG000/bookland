@@ -22,7 +22,7 @@ const config: Config = {
                 },
                 dark: {
                     background: "#1A1A2E",
-                    surface: "#16213E",
+                    surface: "#000000",
                     "text-normal": "#FFFFFF",
                     "text-secondary": "#B0B0B0",
                     neutral: "#0F3460",
@@ -33,12 +33,12 @@ const config: Config = {
                 light: {
                     background: "#DEFCF9",
                     surface: "#FFFFFF",
-                    "text-normal": "#333333",
-                    "text-secondary": "#666666",
-                    neutral: "#CADEFC",
-                    "border-light": "#E0E0E0",
-                    "border-medium": "#BDBDBD",
-                    "border-heavy": "#9E9E9E",
+                    "text-normal": "#2C2C2C",
+                    "text-secondary": "#595959",
+                    neutral: "#A3D4F7",
+                    "border-light": "#D9D9D9",
+                    "border-medium": "#A6A6A6",
+                    "border-heavy": "#7D7D7D",
                 },
             },
             fontFamily: {

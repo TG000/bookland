@@ -1,7 +1,7 @@
-import { NavLink, Theme } from "@/types";
+import { FooterMenuProps, NavLinkProps, ThemeProps } from "@/types";
 import { MdComputer, MdDarkMode, MdLightMode } from "react-icons/md";
 
-export const navLinks: NavLink[] = [
+export const navLinks: NavLinkProps[] = [
     {
         label: "Recommend",
         href: "/recommend",
@@ -16,7 +16,7 @@ export const navLinks: NavLink[] = [
     },
 ];
 
-export const themes: Theme[] = [
+export const themes: ThemeProps[] = [
     {
         value: "light",
         label: "Light",
@@ -31,5 +31,55 @@ export const themes: Theme[] = [
         value: "system",
         label: "System",
         icon: MdComputer,
+    },
+];
+
+export const footerMenus: FooterMenuProps[] = [
+    {
+        title: "Discover",
+        footerLinks: [
+            {
+                label: "Premium",
+                href: "/premium",
+            },
+            {
+                label: "Become a Creator",
+                href: "/creator",
+            },
+            {
+                label: "Work with us",
+                href: "/work",
+            },
+        ],
+    },
+    {
+        title: "Support",
+        footerLinks: [
+            {
+                label: "FAQs",
+                href: "/faqs",
+            },
+            {
+                label: "Help Center",
+                href: "/help",
+            },
+        ],
+    },
+    {
+        title: "Legal",
+        footerLinks: [
+            {
+                label: "Privacy Policy",
+                href: "/privacy",
+            },
+            {
+                label: "Terms of Service",
+                href: "/terms",
+            },
+            {
+                label: "Compliance",
+                href: "/compliance",
+            },
+        ],
     },
 ];

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { getOAuthIcon } from "@/lib/utils";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { OAuthProvider } from "@/types/auth";
 import { signInWithOAuth } from "@/lib/actions/user.action";
 import { useRouter } from "next/navigation";
