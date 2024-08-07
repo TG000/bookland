@@ -6,7 +6,7 @@ import React from "react";
 const Logo = () => {
     return (
         <Link href="/">
-            <Image src={logoImg} alt="logo" height={60} />
+            <Image src={logoImg} alt="logo" height={54} />
         </Link>
     );
 };

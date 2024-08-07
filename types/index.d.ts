@@ -23,7 +23,7 @@ export interface ThemeProps {
     label: string;
     icon: IconType;
 }
-export interface FooterLinkProps {
+interface FooterLinkProps {
     label: string;
     href: string;
 }
@@ -37,4 +37,16 @@ export interface SectionProps {
     title: string;
     href: string;
     children: React.ReactNode;
+}
+
+interface SidebarMenuItemProps {
+    icon: IconType;
+    title: string;
+    href?: string;
+    subMenus?: NavLinkProps[];
+}
+
+export interface SidebarMenuProps {
+    menuLabel: string;
+    items: SidebarMenuItemProps[];
 }

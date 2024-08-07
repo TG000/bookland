@@ -2,17 +2,9 @@ import SignInForm from "@/components/forms/SignInForm";
 import OAuthButton from "@/components/shared/OAuthButton";
 import { Separator } from "@/components/ui/separator";
 import { googleProvider } from "@/constants/provider_constants";
-import { validateRequest } from "@/lib/actions/user.action";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
-const SignInPage = async () => {
-    const { user } = await validateRequest();
-
-    if (user !== null) {
-        redirect("/");
-    }
-
+const SignInPage = () => {
     return (
         <>
             <div className="flex-center w-1/2 flex-col">

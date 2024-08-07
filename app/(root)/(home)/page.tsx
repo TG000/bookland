@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/carousel";
 import Book from "@/components/shared/Book";
 import { Button } from "@/components/ui/button";
-import { MdLightbulb } from "react-icons/md";
+import { MdTipsAndUpdates } from "react-icons/md";
 import Genre from "@/components/shared/Genre";
 import LeaderBoard from "@/components/shared/LeaderBoard";
 import Section from "@/components/shared/Section";
@@ -160,7 +160,7 @@ const HomePage = async () => {
     ];
 
     if (user?.role === userRoles.ADMIN) {
-        return redirect("/admin/dashboard");
+        return redirect("/dashboard");
     }
 
     return (
@@ -212,7 +212,7 @@ const HomePage = async () => {
             <section className="surface">
                 <div className="py-5 container flex-between">
                     <span className="flex-start text-normal body-medium">
-                        <MdLightbulb className="h-8 w-8 mr-2 text-yellow-400" />
+                        <MdTipsAndUpdates className="h-8 w-8 mr-2 text-yellow-400" />
                         Summaries, bookmarks and reviews are now supported by
                         Bookland Premium!
                     </span>

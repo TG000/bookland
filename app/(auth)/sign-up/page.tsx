@@ -1,15 +1,7 @@
 import SignUpForm from "@/components/forms/SignUpForm";
-import { validateRequest } from "@/lib/actions/user.action";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
-const SignUpPage = async () => {
-    const { user } = await validateRequest();
-
-    if (user !== null) {
-        redirect("/");
-    }
-
+const SignUpPage = () => {
     return (
         <>
             <div className="flex-center w-1/2 flex-col">

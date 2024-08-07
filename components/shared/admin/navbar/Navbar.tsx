@@ -10,14 +10,12 @@ import {
     navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import ThemeToggler from "@/components/shared/navbar/ThemeToggler";
-import Logo from "@/components/shared/Logo";
 
 const Navbar = () => {
     return (
-        <div className="surface w-full py-4 fixed z-40">
-            <div className="container flex-between">
-                <Logo />
-                <GlobalSearchbar />
+        <div className="flex-between background-neutral w-full p-4">
+            <GlobalSearchbar />
+            <div className="flex-center">
                 <NavigationMenu>
                     <NavigationMenuList>
                         {navLinks.map((navLink) => (
@@ -37,10 +35,8 @@ const Navbar = () => {
                         ))}
                     </NavigationMenuList>
                 </NavigationMenu>
-                <div className="flex items-center">
-                    <ThemeToggler />
-                    <AuthRedirect />
-                </div>
+                <ThemeToggler />
+                <AuthRedirect />
             </div>
         </div>
     );
