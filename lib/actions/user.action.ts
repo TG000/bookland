@@ -71,7 +71,7 @@ export async function signIn(params: SignInProps) {
 
         return {
             success: true,
-            data: existingUser,
+            data: existingUser.role === "admin" ? "/admin/dashboard" : "/",
             message: "Sign in successfully.",
         };
     } catch (error) {

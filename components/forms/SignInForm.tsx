@@ -54,7 +54,7 @@ const SignInForm = () => {
                 return;
             }
 
-            router.push("/");
+            router.push(response.data!);
         } catch (error) {
             console.error(error);
         } finally {
