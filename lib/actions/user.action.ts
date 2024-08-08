@@ -8,6 +8,8 @@ import { cookies } from "next/headers";
 import { isValidEmail, isValidUsername } from "@/lib/utils";
 import { cache } from "react";
 import { generateCodeVerifier, generateState } from "arctic";
+import { Role } from "@prisma/client";
+import { pages } from "@/constants/route_constants";
 
 export async function signIn(params: SignInProps) {
     try {
@@ -71,7 +73,10 @@ export async function signIn(params: SignInProps) {
 
         return {
             success: true,
-            data: existingUser.role === "admin" ? "/admin/dashboard" : "/",
+            data:
+                existingUser.role === Role.ADMIN
+                    ? pages.ADMIN_DASHBOARD
+                    : pages.HOME,
             message: "Sign in successfully.",
         };
     } catch (error) {
@@ -194,7 +199,7 @@ export async function signUp(params: SignUpProps) {
         const userId = generateIdFromEntropySize(10);
         const profilePictureURL = process.env.RANDOM_AVATAR_API + username;
 
-        const newUser = await prisma.user.create({
+        await prisma.user.create({
             data: {
                 id: userId,
                 username,
@@ -216,7 +221,7 @@ export async function signUp(params: SignUpProps) {
 
         return {
             success: true,
-            data: newUser,
+            data: pages.SIGN_IN,
             message: "Sign up successfully.",
         };
     } catch (error) {

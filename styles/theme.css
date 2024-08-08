@@ -15,12 +15,8 @@
         @apply bg-light-surface dark:bg-dark-surface;
     }
 
-    .accent-1 {
-        @apply bg-accent-1;
-    }
-
-    .accent-2 {
-        @apply bg-accent-2;
+    .accent {
+        @apply bg-accent-1 dark:bg-accent-2;
     }
 
     .background-neutral {

@@ -20,6 +20,7 @@ import {
     MdSettings,
     MdSettingsAccessibility,
 } from "react-icons/md";
+import { pages } from "./route_constants";
 
 export const navLinks: NavLinkProps[] = [
     {
@@ -114,7 +115,7 @@ export const sidebarMenus: SidebarMenuProps[] = [
                 subMenus: [
                     {
                         label: "Overview",
-                        href: "/dashboard",
+                        href: pages.ADMIN_DASHBOARD,
                     },
                     {
                         label: "Analytics",
@@ -144,12 +145,12 @@ export const sidebarMenus: SidebarMenuProps[] = [
             {
                 icon: MdBook,
                 title: "All Books",
-                href: "/books/all",
+                href: pages.ADMIN_BOOKS_ALL,
             },
             {
                 icon: MdAdd,
-                title: "Add New Book",
-                href: "/books/add",
+                title: "Add New",
+                href: pages.ADMIN_BOOKS_ADD,
             },
             {
                 icon: MdCollections,

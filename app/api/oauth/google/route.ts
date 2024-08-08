@@ -1,3 +1,4 @@
+import { pages } from "@/constants/route_constants";
 import { google, lucia, prisma } from "@/lib/auth";
 import { getUsernameByEmail } from "@/lib/utils";
 import { GoogleUser } from "@/types/auth";
@@ -169,9 +170,12 @@ export async function GET(request: NextRequest) {
             cookies().set("state", "", { expires: new Date(0) });
             cookies().set("codeVerifier", "", { expires: new Date(0) });
 
-            return NextResponse.redirect(new URL("/", process.env.BASE_URL), {
-                status: 302,
-            });
+            return NextResponse.redirect(
+                new URL(pages.HOME, process.env.BASE_URL),
+                {
+                    status: 302,
+                }
+            );
         }
     } catch (error: any) {
         console.error(error);

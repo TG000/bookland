@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { lucia } from "@/lib/auth";
+import { Role } from "@prisma/client";
 
 interface DatabaseUserAttributes {
     id: string;
@@ -8,7 +9,7 @@ interface DatabaseUserAttributes {
     email: string;
     emailVerified: boolean;
     phone: string;
-    role: string;
+    role: Role;
     profilePictureURL: string;
 }
 

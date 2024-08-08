@@ -7,6 +7,12 @@ generator client {
     provider = "prisma-client-js"
 }
 
+enum Role {
+    USER
+    AUTHOR
+    ADMIN
+}
+
 model User {
     id                    String                 @id
     username              String                 @unique
@@ -15,13 +21,19 @@ model User {
     emailVerified         Boolean                @default(false) @map("email_verified")
     phone                 String?                @unique
     passwordHash          String?                @map("password_hash")
-    role                  String                 @default("user")
+    role                  Role                   @default(USER)
     profilePictureURL     String                 @map("profile_picture_url")
+    bio                   String?
+    nationality           String?
+    dateOfBirth           DateTime?              @map("date_of_birth")
     createdAt             DateTime               @default(now()) @map("created_at")
     updatedAt             DateTime               @updatedAt @map("updated_at")
     emailVerificationCode EmailVerificationCode?
+    author                Author?
     oauthAccounts         OAuthAccount[]
     sessions              Session[]
+    followers             Follow[]               @relation("follower")
+    following             Follow[]               @relation("following")
 
     @@map("users")
 }
@@ -60,4 +72,95 @@ model OAuthAccount {
 
     @@id([providerId, providerUserId])
     @@map("oauth_accounts")
+}
+
+model Follow {
+    followerId  String @map("follower_id")
+    followingId String @map("following_id")
+
+    follower  User @relation("follower", fields: [followerId], references: [id], onDelete: Cascade)
+    following User @relation("following", fields: [followingId], references: [id], onDelete: Cascade)
+
+    @@id([followerId, followingId])
+    @@map("follows")
+}
+
+model Author {
+    id     String       @id
+    userId String       @unique @map("user_id")
+    teams  AuthorTeam[]
+    books  Book[]
+
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+    @@map("authors")
+}
+
+model AuthorTeam {
+    authorId String @map("author_id")
+    teamId   String @map("team_id")
+
+    author Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
+    team   Team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
+
+    @@id([authorId, teamId])
+    @@map("author_teams")
+}
+
+model Team {
+    id          String  @id
+    teamName    String  @unique @map("team_name")
+    displayName String? @map("display_name")
+
+    authors AuthorTeam[]
+
+    @@map("teams")
+}
+
+enum BookType {
+    TEXT
+    IMAGE
+}
+
+enum BookStatus {
+    DRAFT
+    IN_PROGRESS
+    FINISHED
+}
+
+model Book {
+    id               String      @id
+    title            String
+    alternativeTitle String?     @map("alternative_title")
+    authorId         String      @map("author_id")
+    description      String
+    imageURL         String      @map("image_url")
+    type             BookType
+    status           BookStatus
+    createdAt        DateTime    @default(now()) @map("created_at")
+    updatedAt        DateTime    @updatedAt @map("updated_at")
+    genres           BookGenre[]
+
+    author Author @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+    @@map("books")
+}
+
+model BookGenre {
+    bookId  String @map("book_id")
+    genreId String @map("genre_id")
+
+    book  Book  @relation(fields: [bookId], references: [id], onDelete: Cascade)
+    genre Genre @relation(fields: [genreId], references: [id], onDelete: Cascade)
+
+    @@id([bookId, genreId])
+    @@map("book_genres")
+}
+
+model Genre {
+    id   String      @id
+    slug String      @unique
+    book BookGenre[]
+
+    @@map("genres")
 }

@@ -51,6 +51,9 @@ const config: Config = {
             },
             aspectRatio: {
                 "2/3": "2 / 3",
+                "3/4": "3 / 4",
+                "5/8": "5 / 8",
+                "9/16": "9 / 16",
             },
             backgroundImage: {
                 hero: "url('/assets/images/hero-image.png')",

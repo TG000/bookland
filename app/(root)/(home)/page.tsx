@@ -16,10 +16,15 @@ import Section from "@/components/shared/Section";
 import Footer from "@/components/shared/footer/Footer";
 import { validateRequest } from "@/lib/actions/user.action";
 import { redirect } from "next/navigation";
-import { userRoles } from "@/constants/user_constants";
+import { Role } from "@prisma/client";
+import { pages } from "@/constants/route_constants";
 
 const HomePage = async () => {
     const { user } = await validateRequest();
+
+    if (user?.role === Role.ADMIN) {
+        return redirect(pages.ADMIN_DASHBOARD);
+    }
 
     const books = [
         {
@@ -158,10 +163,6 @@ const HomePage = async () => {
             slug: "business",
         },
     ];
-
-    if (user?.role === userRoles.ADMIN) {
-        return redirect("/dashboard");
-    }
 
     return (
         <main className="background">

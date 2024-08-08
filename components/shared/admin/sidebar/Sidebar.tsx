@@ -18,10 +18,10 @@ const Sidebar = () => {
     return (
         <div
             data-collapsed={collapsed}
-            className={`surface flex flex-col data-[collapsed=true]:w-[88px] data-[collapsed=false]:w-1/6 transition-[width] duration-300 h-screen`}
+            className={`background border-r border-light sticky left-0 bottom-0 top-0 flex flex-col data-[collapsed=true]:w-[88px] data-[collapsed=false]:w-64 transition-[width] duration-300 h-screen`}
         >
             <div
-                className={`${!collapsed ? "flex-between" : "flex-center"} p-4 border-b border-light h-[86px]`}
+                className={`${!collapsed ? "flex-between" : "flex-center"} m-4 mb-0 pb-4 border-b border-light h-fit`}
             >
                 {!collapsed && <Logo />}
                 <Button

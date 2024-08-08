@@ -13,7 +13,7 @@ import ThemeToggler from "@/components/shared/navbar/ThemeToggler";
 
 const Navbar = () => {
     return (
-        <div className="flex-between background-neutral w-full p-4">
+        <div className="sticky top-0 flex-between background w-full px-8 py-4">
             <GlobalSearchbar />
             <div className="flex-center">
                 <NavigationMenu>

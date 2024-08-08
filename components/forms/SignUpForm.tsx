@@ -56,7 +56,7 @@ const SignUpForm = () => {
                 return;
             }
 
-            router.push("/sign-in");
+            router.push(response.data!);
         } catch (error) {
             console.error(error);
         } finally {

@@ -29,7 +29,7 @@ const SidebarMenu = ({
                 item.href !== undefined ? (
                     <Link
                         key={item.title}
-                        className={`text-secondary flex-start p-2 ${pathName !== item.href ? "text-secondary hover:text-white hover:bg-light-border-heavy dark:hover:bg-dark-border-heavy" : "bg-primary text-white"} rounded-md text-nowrap ${collapsed ? "w-fit" : ""}`}
+                        className={`flex-start p-2 ${pathName !== item.href ? "text-normal hover:bg-light-border-heavy dark:hover:bg-dark-border-heavy" : "bg-primary text-white"} rounded-md text-nowrap ${collapsed ? "w-fit" : ""}`}
                         href={item.href}
                     >
                         <item.icon
@@ -40,7 +40,7 @@ const SidebarMenu = ({
                 ) : (
                     <Accordion key={item.title} type="single" collapsible>
                         <AccordionItem value="item">
-                            <AccordionTrigger>
+                            <AccordionTrigger className="text-normal hover:bg-light-border-heavy dark:hover:bg-dark-border-heavy">
                                 <item.icon
                                     className={`h-6 w-6 ${!collapsed ? "mr-3" : ""}`}
                                 />
@@ -52,7 +52,7 @@ const SidebarMenu = ({
                                 {item.subMenus!.map((subItem) => (
                                     <Link
                                         key={subItem.label}
-                                        className={`flex-start p-2 my-1 ${pathName !== subItem.href ? "text-secondary hover:text-white hover:bg-light-border-heavy dark:hover:bg-dark-border-heavy" : "bg-primary text-white"} rounded-md w-full`}
+                                        className={`flex-start p-2 my-1 ${pathName !== subItem.href ? "text-normal hover:bg-light-border-heavy dark:hover:bg-dark-border-heavy" : "bg-primary text-white"} rounded-md w-full`}
                                         href={subItem.href}
                                     >
                                         {subItem.label}
